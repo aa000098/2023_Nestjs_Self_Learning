@@ -11,6 +11,8 @@ import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { UsersModel } from './users/entities/users.entity';
 import { PostsModel } from './posts/entities/posts.entity';
+import { AuthModule } from './auth/auth.module';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
@@ -19,8 +21,6 @@ import { PostsModel } from './posts/entities/posts.entity';
       ProfileModel,
       PostModel,
       TagModel,
-      UsersModel,
-      PostsModel,
     ]),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -43,6 +43,8 @@ import { PostsModel } from './posts/entities/posts.entity';
     }),
     UsersModule,
     PostsModule,
+    AuthModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],
