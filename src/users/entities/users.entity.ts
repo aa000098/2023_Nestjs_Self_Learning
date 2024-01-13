@@ -1,6 +1,7 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { RolesEnum } from "../const/roles.const";
 import { PostsModel } from "src/posts/entities/posts.entity";
+import { BaseModel } from "src/entity/inheritance.entity";
 
 /**
  * id: number
@@ -12,13 +13,15 @@ import { PostsModel } from "src/posts/entities/posts.entity";
  * password: string
  * 
  * role: [RolesEnum.USER, RolesEnum.ADMIN]
+ * 
+ * createdAt
+ * 
+ * updatedAt
  */
 
 @Entity()
-export class UsersModel{
-    @PrimaryGeneratedColumn()
-    id: number;
-
+export class UsersModel extends BaseModel{
+ 
     @Column({
         length: 20,
         unique: true,
@@ -44,4 +47,5 @@ export class UsersModel{
 
     @OneToMany(()=>PostsModel, (post)=>post.author)
     posts: PostsModel[];
+
 }

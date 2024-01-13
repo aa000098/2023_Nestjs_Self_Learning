@@ -10,10 +10,15 @@ export class UsersController {
     return this.usersService.getAllUsers();
   }
 
-  @Post()
-  postUser(@Body('nickname') nickname: string,
-  @Body('email') email: string,
-  @Body('password') password: string) {
-    return this.usersService.createUser(nickname, email, password);
-  }
+  // auth 모듈에서 회원가입하도록 변경
+  // @Post()
+  // postUser(@Body('nickname') nickname: string,
+  // @Body('email') email: string,
+  // @Body('password') password: string) {
+  //   return this.usersService.createUser({
+  //     nickname, 
+  //     email, 
+  //     password
+  //   });
+  // }
 }
