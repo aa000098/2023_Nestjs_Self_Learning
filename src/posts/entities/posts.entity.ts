@@ -1,11 +1,9 @@
+import { BaseModel } from "src/entity/inheritance.entity";
 import { UsersModel } from "src/users/entities/users.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
-export class PostsModel{
-    @PrimaryGeneratedColumn()
-    id: number;
-
+export class PostsModel extends BaseModel{
     // 1) UsersModel과 Foreign Key를 이용해 연동
     // 2) null이 될 수 없음
     @ManyToOne(()=> UsersModel, (user)=> user.posts, {
@@ -24,5 +22,4 @@ export class PostsModel{
 
     @Column()
     commentCount: number;
-
 }
